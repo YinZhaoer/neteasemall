@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/homePage.css">
+    <link rel="stylesheet" type="text/css" href="css/loginPage.css">
+    <link rel="stylesheet" type="text/css" href="css/updateProductPage.css">
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/jquery/jquery-form.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        window.onload=function()//用window的onload事件，窗体加载完毕的时候
+        {
+            setFunctionBar();
+            console.log("setFunctionBar")
+
+        }
+    </script>
+</head>
+<body>
+<div id="functionBar" class="functionBarClass">
+    <div id="loginDiv" class="myDiv">
+        <span id="loginDiv_span">请</span>
+        <a id="loginDiv_href" href="/login.html">[登录]</a>
+    </div>
+
+    <div id="cartDiv" class="myDiv" style="display: none">
+        <a id=cartDiv_herf" href="/cart.html">购物车</a>
+    </div>
+
+    <div id="orderDiv" class="myDiv" style="display: none">
+        <a id="orderDiv_herf" href="/order.html">财务</a>
+    </div>
+
+    <div id="updateDiv" class="myDiv" style="display: none">
+        <a id="updateDiv_herf" href="/updateProduct.html">发布</a>
+    </div>
+
+
+    <div id="homePageDiv" class="myDiv">
+        <a id="homePageDiv_herf" href="/">首页</a>
+    </div>
+</div>
+
+<form id="loginForm" action="http://localhost:8080/user/login.do" method="post" onsubmit="return false">
+    <p>用户名：<input id="username" type="string" name="username" class="shortInput"/></p>
+    <p>密码：  <input id="password" type="password" name="password" class="shortInput"/></p>
+    <input type="submit" class="submitButton" value="登录"  onclick="afterLogin()" />
+</form>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="css/homePage.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/jquery/jquery-form.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        window.onload=function()//用window的onload事件，窗体加载完毕的时候
+        {
+            setFunctionBar();
+            console.log("setFunctionBar")
+            setCartPage()
+            console.log("setCart")
+
+
+        }
+    </script>
+</head>
+<body id="cartBodyDiv" style="display: none">
+<div id="functionBar" class="functionBarClass">
+    <div id="loginDiv" class="myDiv">
+        <span id="loginDiv_span">请</span>
+        <a id="loginDiv_href" href="/login.html">[登录]</a>
+    </div>
+
+    <div id="cartDiv" class="myDiv" style="display: none">
+        <a id=cartDiv_herf" href="/cart.html">购物车</a>
+    </div>
+
+    <div id="orderDiv" class="myDiv" style="display: none">
+        <a id="orderDiv_herf" href="/order.html">财务</a>
+    </div>
+
+    <div id="updateDiv" class="myDiv" style="display: none">
+        <a id="updateDiv_herf" href="/updateProduct.html">发布</a>
+    </div>
+
+
+    <div id="homePageDiv" class="myDiv">
+        <a id="homePageDiv_herf" href="/">首页</a>
+    </div>
+</div>
+
+<div id="cartShowDiv">
+<table id="cartShowDiv_table">
+    <tr id="testTr" class="cartProductTr" style="top: 0%">
+        <td id="td_name" class="cartNameTd">商品名称</td>
+        <td id="td_count" class="cartCountTd">数量</td>
+        <td id="td_price" class="cartPriceTd">价格</td>
+    </tr>
+</table>
+</div>
+
+<div id="noCartShowDiv">
+<h2>购物车空空如也</h2>
+    <button class="submitButton" onclick=goBack()>退出</button>
+</div>
+
+<div class="wrap-dialog hide">
+    <div class="dialog">
+        <div class="dialog-header">
+            <span class="dialog-title">确认购买</span>
+        </div>
+        <div class="dialog-body">
+            <span class="dialog-message">您要清空购物车吗？</span>
+        </div>
+        <div class="dialog-footer">
+            <input type="button" class="btn" id="confirm" value="确认" />
+            <input type="button" class="btn ml50" id="cancel" value="取消" />
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布和修改页面</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/homePage.css">
+    <link rel="stylesheet" type="text/css" href="css/updateProductPage.css">
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/jquery/jquery-form.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        window.onload=function()//用window的onload事件，窗体加载完毕的时候
+        {
+            setFunctionBar()
+            console.log("set functionBar")
+            setUpdateProduct()
+            console.log("set update product")
+            showImageURL()
+
+        }
+    </script>
+</head>
+
+<body>
+<div id="functionBar" class="functionBarClass">
+    <div id="loginDiv" class="myDiv">
+        <span id="loginDiv_span">请</span>
+        <a id="loginDiv_href" href="/login.html">[登录]</a>
+    </div>
+
+    <div id="cartDiv" class="myDiv" style="display: none">
+        <a id=cartDiv_herf" href="/cart.html">购物车</a>
+    </div>
+
+    <div id="orderDiv" class="myDiv" style="display: none">
+        <a id="orderDiv_herf" href="/order.html">财务</a>
+    </div>
+
+    <div id="updateDiv" class="myDiv" style="display: none">
+        <a id="updateDiv_herf" href="/updateProduct.html">发布</a>
+    </div>
+
+
+    <div id="homePageDiv" class="myDiv">
+        <a id="homePageDiv_herf" href="/">首页</a>
+    </div>
+</div>
+
+
+<form id="updateForm" action="http://localhost:8080/manage/product/save.do" method="post" onsubmit="return false" enctype="multipart/form-data">
+    <p>标题：<input id="productName" class="shortInput" type="string" name="name" placeholder="2-80字符"/></p>
+    <p>摘要：<input id="productAbstract" class="shortInput" type="string" name="subtitle" placeholder="2-140字符" /></p>
+    <div id="updateImageDiv">
+        <h1>图片上传方式 </h1>
+        <input type="radio" id="imageURL" value="file" name="ImageMethod" onclick="showImageURL()" checked>链接
+        <input type="radio" id="imageFile" value="file" name="ImageMethod" onclick="showImageFile()">文件
+        <p id="ImageFile_p" style="display: none;">图片：<input id="productImageFile" class="shortInput" type="file" , name="mainImage" placeholder="目前只能在本机操作，发布前点击上传"/>
+            <button id="updateImageFileButton" onclick="upLoadImageToFTP()" class="submitButton">上传</button>
+        </p>
+        <p id="ImageURL_p" style="display: none;">图片：<input id="productImageURL" class="shortInput" type="string" , name="mainImage" placeholder="请勿输入过长链接，发布前点击显示"/>
+            <button id="updateImageURLButton" onclick="showImageByURL()" class="submitButton">显示</button>
+        </p>
+    </div>
+    <p>价格：<input  id="productPrice" class="shortsetInput" type="string" name="price" type="number" step="1"  min="0" onkeyup="this.value= this.value.match(/\d+(\.\d{0,2})?/) ? this.value.match(/\d+(\.\d{0,2})?/)[0] : ''"/></p>
+    <p>详情：<textarea id="productDetail" class="longInput" type="string" name="detail" placeholder="2-1000字符"></textarea></p>
+    <input id="productReleaseBt" type="submit" class="submitButton" value="发布" onclick="afterReleaseProduct(-1)" />
+    <input id="productUpdateBt" type="submit" class="submitButton" value="更新" onclick="afterUpdateProduct()" style="display: none"/>
+</form>
+
+<img id="updateImage"><img>
+
+</body>
+</html>
